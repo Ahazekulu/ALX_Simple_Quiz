@@ -1,54 +1,18 @@
-function add(number1, number2) {
-    return number1 + number2;
+function checkAnswer() {
+    const correctAnswer = "4";
+    const selectedOption = document.querySelector('input[name="quiz"]:checked');
+    const feedbackElement = document.getElementById("feedback");
+    if (selectedOption) {
+        const userAnswer = selectedOption.value;
+        if (userAnswer === correctAnswer) {
+            feedbackElement.textContent = "Correct! Well done.";
+            feedbackElement.style.color = "green"; 
+            feedbackElement.textContent = "That's incorrect. Try again!";
+            feedbackElement.style.color = "red"; 
+        }
+    } else {
+        feedbackElement.textContent = "Please select an answer before submitting.";
+        feedbackElement.style.color = "orange"; 
+    }
 }
-document.getElementById('add').addEventListener('click', function() {
-    const number1 = parseFloat(document.getElementById('number1').value) || 0;
-    const number2 = parseFloat(document.getElementById('number2').value) || 0;
-    const result = add(number1, number2);
-    document.getElementById('calculation-result').textContent = result;
-});
-
-
-function subtract(number1, number2) {
-    return number1 - number2;
-}
-document.getElementById('subtract').addEventListener('click', function() {
-    const number1 = parseFloat(document.getElementById('number1').value) || 0;
-    const number2 = parseFloat(document.getElementById('number2').value) || 0;
-    const result = subtract(number1, number2);
-    document.getElementById('calculation-result').textContent = result;
-});
-
-
-
-
-
-function multiply(number1, number2) {
-    return number1 * number2;
-}
-document.getElementById('multiply').addEventListener('click', function() {
-    const number1 = parseFloat(document.getElementById('number1').value) || 0;
-    const number2 = parseFloat(document.getElementById('number2').value) || 0;
-    const result = multiply(number1, number2);
-    document.getElementById('calculation-result').textContent = result;
-});
-
-
-
-
-
-
-
-function divide(number1, number2) {
-    return number1 / number2;
-}
-document.getElementById('divide').addEventListener('click', function() {
-    const number1 = parseFloat(document.getElementById('number1').value) || 0;
-    const number2 = parseFloat(document.getElementById('number2').value) || 0;
-    const result = divide(number1, number2);
-    document.getElementById('calculation-result').textContent = result;
-});
-
-
-
-
+document.getElementById("submit-answer").addEventListener("click", checkAnswer);
